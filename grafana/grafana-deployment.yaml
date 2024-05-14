@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  replicas: 1  # Set replicas to 1 for one instance
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - name: grafana
+        image: grafana/grafana:latest  # Adjust image tag if needed
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        # Additional configurations for persistence, resources etc. (optional)
